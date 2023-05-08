@@ -1,0 +1,56 @@
+# примеры API-запросов
+
+@baseUrl = http://localhost:8000/api
+
+
+# получение объявлений
+GET {{baseUrl}}/advertisements/
+Content-Type: application/json
+
+
+
+###
+# удаление пользователем объявления
+DELETE {{baseUrl}}/advertisements/8/
+Content-Type: application/json
+Authorization: Token 9602930f7db0ade0655443ab8352fe75ba45b97a
+
+###
+# создание объявления
+POST {{baseUrl}}/advertisements/
+Content-Type: application/json
+# Authorization: Token 6d08324c8e5f92bf8a53b857271566a65a353441
+
+{
+  "title": "Шкаф ikea2",
+  "description": "Срочно"
+}
+
+###
+
+# попытка поменять объявление
+PATCH {{baseUrl}}/advertisements/10/
+Content-Type: application/json
+Authorization: Token 9602930f7db0ade0655443ab8352fe75ba45b97a
+
+
+{
+  "status": "CLOSED"
+}
+
+###
+
+# фильтрация по создателю
+GET {{baseUrl}}/advertisements/?creator=1
+Content-Type: application/json
+
+###
+
+# фильтрация по дате
+GET {{baseUrl}}/advertisements/?created_at_after=2023-05-07
+Content-Type: application/json
+
+###
+# фильтрация по статусу и создателю
+GET {{baseUrl}}/advertisements/?status=OPEN&creator=1
+Content-Type: application/json
